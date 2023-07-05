@@ -1,0 +1,15 @@
+*{
+    margin: 0;   /*so that default margin of all elements provided by browser becomes zero*/
+    padding: 0;
+    box-sizing: border-box;  /*makes the content small so that the entire div becomes the actual size of width and height*/ 
+}
+
+.box{
+    border: 20px solid red;
+    padding: 30px;   /* top - right - bottom - left*/
+    margin: 40px;
+/* top - bottom  & left-right */
+/* top -> left - right -> bottom */
+    width: 200px;
+    height: 200px;
+}

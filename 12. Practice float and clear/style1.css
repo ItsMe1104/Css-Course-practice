@@ -1,0 +1,52 @@
+/* If two or more objects have same property of floating left or right then they will come side by side depending on their order */
+
+/*block element will always try to find a way to move up if it finds something is floating*/
+
+*{
+    box-sizing: border-box;
+}
+
+.bigbox{
+    width: 500px;
+    height: 400px;
+    background-color: gainsboro;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+    overflow: auto;
+    
+}
+
+
+.b1{
+    background-color: red;
+    float: left;
+    /* clear: right;   will not work on block elements it only works on floating elements*/
+    
+}
+
+
+.b2{
+    background-color: blue;
+    float: left; 
+     clear: left;
+
+     /* Box3 will come on right side of box 2 as it was flowing on left side of box 2 already and due to float property it is no longer a block element*/
+     /* Box4 had to come on right side of box3 but it found space on above beside b1 hence it went there*/
+     /* To make it beside box 3 use float left on box 4 */
+}
+
+
+.b3{
+    background-color: green;
+    float: left;
+}
+
+
+.b4{
+    background-color: yellow;
+    clear: left;  /*It will clear all the floating objects on its left and move down*/
+}

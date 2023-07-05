@@ -1,0 +1,30 @@
+/*clear property left, right, both ,inherit, none */
+/* It specifies what elements can float besides the cleared element and on which side */
+/* If we want the objects that dont have the property float will be allowed to flow on a particular direction of the floating object or not */
+/* It will be defined on the non-floating object to which side of the floating object it doesnt want to flow */
+ /* It will simply go down without disrupting the floating object*/
+.container{
+    border: 2px solid red;
+}
+
+.img1{
+    /* float: left; */
+    float: right;  /* will make the image float right and the paragraph can now have space to float left*/
+}   
+
+.img2{
+    float: left;
+}
+
+.p1{
+    border: 2px solid green;
+    clear: right;
+}
+
+.p2{
+    clear: right;    /*It doesnt want to have a floating object on the right */
+
+    clear: both;   /*It doesnt want to have a floating object on the right */
+   
+}
+

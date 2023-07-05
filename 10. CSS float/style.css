@@ -1,0 +1,26 @@
+/* https://youtu.be/FQfNAOwzp5Y */
+
+/* Placeholder image website -> Remember */
+/* https://via.placeholder.com/100   -> to get 100 x 100px */
+/* https://via.placeholder.com/100x200  -> to get 200 x 100 image*/ 
+
+/* Use float and clear properties only for styling paragraphs and images */
+/* It should not be used for ccreating layouts */
+
+/* By default img is an inline block while <p> is a block  */
+/* Inorder to make the <p> float on right side of image we need to make our image float on left side*/
+/*this will actually means that the one that floats comes above the block but does not disrupts its content*/
+/*margin can only work on the floating object which will still stay on top of the block but just make away the blocks content because of margins*/
+/* If two or more objects have same property of floating left or right then they will come side by side depending on their order */
+.container{
+    border: 2px solid red;
+}
+
+.img1{
+    /* float: left;    will make the image float left and the paragraph can now have space to float right */
+    float: right;  /* will make the image float right and the paragraph can now have space to float left*/
+}   
+
+.img2{
+    float: left;
+}

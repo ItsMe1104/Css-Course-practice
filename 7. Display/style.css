@@ -1,0 +1,60 @@
+/* <p> , <h1- h6> , div , forms , list elements(ol,ul,li)  are block elements */
+/* span , anchor is an inline element*/
+/* img is an inline-block */
+/*  Use of span -> to design different words differently */
+/*  span will inherit the property of its parent  */
+
+
+/* We cannot define the height and width of inline elements*/
+/* Only the left and right margin of inline elements can be defined but not the top and bottom ones */
+/* We can define the height and width of inline-block and block elements */
+
+/* We can explicitly change this defined property of elements using display option */
+
+/* if <ul> has padding = 0 then bullets point wont show */
+
+*{
+    /* border: 2px solid red; */
+    margin: 0;
+    
+    box-sizing: border-box;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p{
+    color: red;
+    display: inline-block;
+    width: 100px;
+}
+
+a{
+    width: 40px;    /* Wont work if display is not set as inline-block as <a> is by-default an inline element*/
+    display: inline-block;
+}
+
+img{
+    width: 200px;
+    height: 300px;
+    display: none;   /*will not show this element on screen neither will it occupy any space*/
+}
+
+ul{
+    list-style: square;    /* various bullet styles*/
+    list-style: none; 
+    padding: 30px;  /*will make the bullets disappear*/
+    text-align: end;
+    background-color: black;
+    color: white;
+}
+
+li{
+    display: inline;
+    padding: 20px;
+}
+
+
+li:hover{                           /*pseudo class gets activated when we hover on that item*/
+    color: violet;
+    cursor: pointer;      /*shows through cursor pointer that the the item is clickable*/
+}

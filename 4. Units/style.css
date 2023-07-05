@@ -1,0 +1,30 @@
+main{
+    border: 5px solid brown;    /*px is also absolute*/
+    
+    /* width: 50%;  takes from parent i.e body */
+    /* width: 50vw;      50% of view screen does not depend on parent hence absolute */
+    width: 25%;
+}
+
+body{
+    font-size: 2em;
+}
+
+header{
+    font-size: 2em;
+}
+
+h1{
+    /* font-size: 40px;  will still stay absolute even if user tries to change his system settings to large font size... By default h1 is em */
+
+    /* font-size: 2em;    will take font-size from its parent too if its in em and multiply it but it is not applicable in terms of px */
+
+    font-size: 3rem;   /*root em that is related to the root element that is html hence if we try to define font-size in rem in html then the current font-size will multiply it*/
+}
+section{
+    border: 5px dashed green;
+    width: 50vw; 
+}
+
+
+/* Use px in borders mainly while use rem for font sizes */

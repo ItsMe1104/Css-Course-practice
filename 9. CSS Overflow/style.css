@@ -1,0 +1,13 @@
+/* The CSS overflow property controls what happens to content that is too big to fit into an area. */
+/*There are 4 overflow properties :- visible, hidden, scroll, auto*/
+/* By default overflow is visible only */
+
+.container{
+    width: 400px;
+    height: 400px;
+    border: 2px solid red;    /*will make paragraph overflow*/
+    /* overflow: hidden;      will make the overflown content hidden and we cant access it */
+    /* overflow: scroll;      will get a scroll bar on x and y axis even if our content is not overflowing*/
+    overflow: auto;    /*same as scroll but the scroll bars will appear only if ther are required to*/
+}
+

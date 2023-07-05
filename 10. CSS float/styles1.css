@@ -1,0 +1,20 @@
+/* The parent of the block element will also occupy space according to the block inside it and not according to the floating object*/
+/* If we want our parent block to occupy space according to the floating object and block inside it together then use overflow property to auto*/
+
+
+.container{
+    border: 2px solid red;
+}
+
+
+.block1{
+    overflow: auto;
+}
+.img1{
+    /* float: left; */
+    float: right;  /* will make the image float right and the paragraph can now have space to float left*/
+}   
+
+.img2{
+    float: left;
+}

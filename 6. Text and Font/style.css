@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+
+h1{
+    /* color:darkslateblue;   sets the color of text */
+    
+    /* color: transparent;     will make the text transparent that wont be seen unless there is a shadow behind
+    */
+    text-align: justify;     /*end means right side and inherit means to inherit what is the alignment in parent*/
+
+    /*justify means like in newspapers every line stretches so that eah line has equal width*/
+
+    text-transform: capitalize;        /*makes the first letter of each word capitalize*/
+
+    text-shadow: 4px 4px 5px red, 5px 5px 5px blue;      /*x-dir, y-dir, blur, color,  {another shadow} */
+
+
+    /*
+    to get the text blurred
+
+    color:trasparent;
+    text-shadow: 4px 4px 10px black;
+    */
+
+
+    /* font styles*/
+    font-family: 'Times New Roman', Times, serif;   /*if browser doesnt support times new roman than times else serif*/
+
+    font-family: 'Times New Roman', monospace, sans-serif;   /* we can also create custom family*/
+
+    /* or use google fonts and put the link tag in html above css link   and then whatever the font family shown in google fonts paste that in css file in our desired element*/
+    /*
+
+    or use the import method and put the content inside style tag in google fonts directly on top of the css file and then whatever the font family shown in google fonts paste that in css file in our desired element 
+    */
+
+    /* verdana is a websafe font always present in every browser hence try to use that*/
+
+    font-family: 'Silkscreen', cursive;
+
+} 
+
+p{
+    /* text-align: left; */
+    text-indent: 40px;    /*only first line gets indented*/
+    letter-spacing: 0.1rem;
+    line-height: 1.6rem;     /* vertical spacing between lines*/
+
+    word-spacing: 10px;
+    /* word-spacing: -20px;    will overlap with  each other */
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;      /*defines boldness (400 is normal)*/
+    font-style: italic;    /*To italicize*/
+    font-style: oblique;   /*Abit more than italicize*/
+}   
+
+a{
+    text-decoration: underline;
+    text-decoration-color: aqua;       /*jisse decorate kiye hai uska property kya hoga*/
+    text-decoration-style: wavy ;
+
+}

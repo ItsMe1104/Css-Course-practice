@@ -1,0 +1,45 @@
+/* id > class > element */
+
+*{
+    font-family: cursive;
+}
+
+/* body{
+    font-size: 20px;
+} */
+
+
+/* first ke andar jaake p ko dhundo */
+/* #first>p{
+    color: green;
+} */
+
+
+
+/* pseudo selector */
+p:hover{
+    color: black;
+}
+
+
+
+#first,#second{
+    color: red;
+}
+
+/*  more priority than above due to cascading 
+#second      
+{
+    color: aqua;
+} */
+
+.purple{
+    color: purple !important;    /*will give the highest precednce and should be used minimum*/
+    font-family: monospace;  /*wont work as universal selector has greater precedence*/
+}
+
+.highlight{
+    background-color: yellow;
+    font-weight: bolder;
+    font-style: italic;
+}

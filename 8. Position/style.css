@@ -1,0 +1,82 @@
+/*  Position -> static, relative, absolute, fixed, or sticky */
+/* By default -> every element's position is static */
+
+/* z-index tells us which element when overlapping should come above*/
+/*More z-index means more priority and will come above*/
+/*By default children come above parent*/
+
+body{
+    color: white;
+}
+
+.container{
+    width: 300px;
+    height: 600px;
+    background-color: gainsboro;
+    margin: 100px;
+}
+.box{
+    width: 100px;
+    height: 100px;
+}
+
+.red{
+    background-color: red;
+    position: relative;        /*means relative to the parent*/
+    /* after setting position property we have to define the directions (top,left,bottom,right) */
+    /*these directions will work from
+        a) jaha pe originally tha waha se
+        b) relative to their parent 
+    */
+
+    top: 50px;   /*matlab top se 50px chorke */   
+    /* if taken in negative units, it is = bottom : -50px*/
+    
+    left: 50px;  /*matlab left se 50px chorke */
+    right : 100px; /*matlab jaha pe originally tha waha se right mei 50px chorke */  
+    /* wont work as left: 50px is defined earlier; remove that to see its effect*/
+
+    bottom: 50px; /*matlab jaha pe originally tha waha se bottom mei 50px chorke */  
+    /* wont work as top: 50px is defined earlier; remove that to see its effect*/
+
+}
+
+.green{
+    background-color: green;
+    position: absolute;   /*it will not affect any other element and be as if it is not present in the page*/
+    /* It goes inside and behaves as relative to the immediate parent that is relative (at last to the root that is html element)*/
+    
+    /* directions */
+    bottom: 0;
+    right: 0;
+
+    z-index: 2;
+}
+
+.blue{
+    background-color: blue;
+    position: fixed;               /*It will fix the element even if we scroll it will stay*/
+    /*It can be used for fixing navbars or a button that always remain fixed*/
+
+    /*directions*/
+    bottom: 50px;
+    right: 50px;
+    z-index: 1;
+
+} 
+
+.purple{
+    background-color: purple;
+    position: sticky;  /* It remains in the screen where it is positioned according tio the directions relative to its parent but moves out as soon as its parent moves out of the screen while scrolling*/
+    /*have to be float for left and right as sticky doesnt work on directions left and right as it is purely for scrolling purpose*/
+
+    /* the sticky element sticks to the top of the page (top: 0), when you reach its scroll position. */
+
+
+    /* directions */
+    top: 50px;
+}
+
+.spacer{
+    height: 300vh;
+}
