@@ -1,0 +1,276 @@
+/*
+
+There are two main elements in flexbox -> flext container , flex children */
+/* The x - axis is called main axis */
+/* The y - axis is called cross axis */
+/* By default whenever we flex the container all the children will flex around main axis */
+/* i.e by default the flex-direction: row is set */
+/* if we want to change the children to flex around cross axis , we have to change the flex-direction : column */
+/* By default if we define the width of children then they will automatically take the whole height of parent flex container 
+This is because the align-items property is by default set to stretch
+
+*/
+
+/* ************************************************************* */
+
+/* Flex container */
+/* 
+    flex-direction -> already discussed
+     flex-direction: row;  
+    flex-direction: column;
+     flex-direction: row reverse; -> from right to left 
+     flex-direction: column reverse; -> from down to up
+*/
+
+/* ****************************************************** */
+
+/* 
+    Normally the screen will shrink with extra flex-container space then after extra space is over, children will shrink as we shrink the screen till their content also shrinks
+    
+    flex-wrap: nowrap;   by default that is why they shrink
+    flex-wrap: wrap; will make the the last children come down from left one by one as as we shrink the screen further after the extra space is over
+
+    flex-wrap: wrap-reverse;  will make the last children come up from left one by one as as we shrink the screen further after the extra space is over
+*/
+ 
+/* ***************************************************** */
+/* 
+ By default if we give margins from all sides then it will appear in all the children from all 4 sides. But if we want that there is margin only between children in all four direction and not between children and sides of the boundary then
+ first delete margin property and then use gap: 80px;
+
+ gap: 80px;   -> shorthand for row and column gap
+ row-gap: 80px;
+ column-gap: 80px;
+*/
+
+/* ************************************************* */
+/* 
+ flex-flow: -> shorthand for flex-wrap and flex direction
+
+ flex-flow: wrap row;
+*/
+
+/* ***************************************************** */
+
+/* 
+
+    justify-content-> if we want to align items around main axis in different layout
+    but if we want to use justify content around cross axis then we have to interchange main axis with cross axis using flex-direction : column;
+    
+  *  justify-content: space-around;    -> will make the extra space equally distribute around children in left and right direction
+
+  when we shrink screen then this space around will shrink first and then the children will start shrinking
+
+  when extra children will get down then also the extra space down will get distributed equally
+
+  *  justify-content: space-around;   -> will make the extra space distribute equally around children but no space between children and boundaries of container 
+
+   when extra children will get out then also the extra space down will get distributed equally but no space between children and boundary down also (first child from left)
+
+  *  justify-content: flex-start;    -> will make the children align towards left with no space in between and the extra space is on right
+  
+  this property is set by default
+
+  *  justify-content: flex-start;    -> will make the children align towards left with no space in between and the extra space is on right
+
+  *  justify-content: center;    -> will make the children align towards centre with no space in between and the extra space is on left and right equally
+
+  if we want space between children then use gap: 10px
+
+*/
+
+/* ******************************************************** */
+
+/* 
+
+     align-items -> if we want to align items around cross axis in different layout
+
+     * align-items : stretch  -> by default set which makes children have complete height of their parent flex-container if we only set their height 
+
+     * align-items : centre;   -> will make the children take their required height and align in center vertiacally
+     
+     * align-items : flex-start;    -> will make the children take their required height and align at top vertiacally
+     
+      bv* align-items : flex-end;    -> will make the children take their required height and align at bottom vertiacally
+
+*/
+
+/* ************************************************************ */
+
+/* 
+    * align-content: space-between;    -> will make the extra space distribute equally around children but no space between children and boundaries of container in vertical direction
+
+    *  align-content: flex-start;     -> will make the children align towards top with no space in between and the extra space is at bottom
+
+
+    * align-content: space-evenly;    -> will make the extra space to be distributed between top bottom and between rows of children  ->  
+   
+*/
+
+
+/* ********************************************************/
+
+/* FLEX-CHILDREN PROPERTY */
+
+/*  Order -> will make them order according to our choice
+
+By default every child has order = 0
+children order themselves in increasing order of these order values
+e.g order: 1 ;
+will make this child go at last as everyone else has by default order 0
+Similarly,
+ order: 2
+will make this child go at last now and child with order:1 becomes second last
+*/
+
+/* ************************************ */
+
+/*
+flex-grow -> makes a particular child take all the extra space while the rest of children will have their defined width
+
+* By default every element has this value set to 0 
+
+/* Therefore while shrinking first this extra space from this child will shrink and then when this child also reached its defined width then these children will start to wrap(if text-wrap:wrap) */
+
+/* If this child comes at next row again it will take all the extra space available in row below */
+
+
+/* 
+
+    *box-1{
+        flex-grow: 1;
+    }
+    *box-2{
+        flex-grow: 2 or 3 or 4 or ...
+    }
+
+    means box2 will get 2 times the extra space box 1 will get
+    P.s box2 will grow at double rate the box1 will grow when more extra space is available
+
+    Therefore, while shrinking the screen box2 will shrink its extra space at double rate then box1
+*/
+
+/* ***************************************************** */
+
+/*
+    flex-shrink: makes a particular child shrink at double rate them the rest of children while we shrink the screen size
+
+    To test this first set flex-wrap : no-wrap
+
+    By default -> this value is set to 1 (remember not 0) for all the elements
+
+    flex-shrink:2   -> will make this element shrink at double speed then rest elements
+
+    * flex-shrink: 0   -> means this child will not shrink even if we shrink the size of screen while the other children will shrink because rest all have default value 1
+    If we set it to 1 then it will shrink like other children
+/* 
+
+    *box-1{
+        flex-shrink: 2;
+    }
+    *box-2{
+        flex-grow: 3 or 4 or ...
+    }
+
+    means box2 will shrink 2 times box1 when we shrink the size of screen
+    
+*/
+
+/* ***************************************************** */
+
+/* 
+
+    flex-basis -> defines the initial width in the line of the main axis for a particular child
+
+    * flex-basis: 200px;   even though every child had a defined width of 80px still this element will have 200px that is different from others
+
+
+    * flex-basis: 25% will make all the children take 25% of the 100% of main screen means 4 boxes in one line
+    (remember to unset their initial width, set the flex-wrap: wrap and define the border-sizing: border-box )
+    
+
+    * if we want the flex-basis to define the initial height in the line of the cross axis for a particular child
+    flex-direction:column in flex container
+    flex-basis: 25%
+
+*/
+
+/* ***************************************************** */
+
+ /* 
+ 
+    flex -> shorthand property for flex-grow, flex-shrink and flex-basis 
+ 
+    * flex: 2 3 200px;    (flex-grow, flex-shrink, flex-basis)
+ */
+ 
+ 
+ 
+ /* ***************************************************** */
+ 
+ /* 
+ 
+    align-self -> if we want to align particularly an element around its own cross axis
+
+    (to set this first set flex-wrap: unwrap)
+    * align-self: flex-start    -> will make the element go up while the rest stay at their place
+
+    * align-self: flex-end     -> will make the element go down while the rest stay at their place
+
+    * align-self: stretch -> will make the element stretch vertically while others remain as they are
+
+ */
+
+
+
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    height: 400px;
+    border: 2px solid red;   
+    /*To make this a flex container use display: flex*/
+    display: flex;
+    /*by default all its children will come in one line from start*/
+    /* flex-direction: row;  By default */
+
+    /* flex-direction: column;   to change the flex for children around cross axis from top to down */
+
+    /* flex-wrap: unwrap; */
+    /* justify-content: space-around; */
+
+    flex-flow: wrap row;
+    justify-content: center;
+
+    align-items: center;
+    align-items: space-evenly;
+}
+
+.box{
+    border: 2px solid green;
+    margin: 10px;
+    width: 100px;
+}
+
+#box-1{
+    /* order: 1;
+    flex-grow: 1;
+    flex-shrink: 2; */
+    flex-basis: 200px;
+    
+}
+
+#box-3{
+    /* order: 2;
+    flex-grow: 2; */
+    flex: 0 0 120px;   /*flex-grow, flex-shrink, flex-basis*/
+    align-self: stretch;
+}
+
+/* #box-4{
+     flex-shrink: 3; 
+} 
+
+*/
