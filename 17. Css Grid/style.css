@@ -1,0 +1,347 @@
+/* Css-Grid -> helps us to manage divs in  @D unlike flex where we mangaed divs in one-d*/
+/* 2-D layout ->  Grid*/
+/* 1-D layout -> flexbox*/
+
+/* Same like flexbox grid will also have one grid parent and some grid children */
+
+/* To make some div as grid parent just set the display property to grid */
+/* By default the grid works top to bottom and has only one column and no. of defined rows */
+
+
+
+
+
+/* Grid parent properties */
+
+/* 1) gap 
+
+row-gap: 20px -> means every row will have 20px gap
+column-gap: 20px -> means every column will have 20px gap
+
+gap: 20px -> shorthand for row-gap and column-gap
+*/
+
+/* ************************************************************ */
+
+/* 2) grid-template column -> will make the no. of columns in grid with each columns width defined
+  
+* grid-template-columns: 100px 200px 300px; -> 1st column will have 100px, 2nd will have 200px and 3rd will have 300px
+
+if there are 10 children then each row will have 3 columns and the last child will be placed in left columns and the rest columns of that row will be empty
+
+
+
+***IMPORTANT****
+* grid-template-columns: 2fr 1fr 1fr 2fr; -> means there would be 4 columns since we defined the sizes 4 times and "fr" means fraction hence 2+1+1+2 = 6 , hence the entire screen width will be divided into 6 parts and each column will be given width according to this ratio.
+These columns will be responsive.
+
+
+If we want to divide all the columns equally but we dont want to define size again and again then we can define the repeat function
+
+* grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 100px);
+
+* grid-template-columns: repeat(auto-fill, 100px) -> if we dont know how many columns we need but we want that they wrap according to screen size  (this is simply like flex-wrap property)
+
+
+*grid-template-columns: auto auto;  --> (just like 1fr 1fr)
+ grid-template-columns: 200px auto;  --> means 1st column -> 200px absolute but 2nd column will take the rest of the screen space which will be responsive 
+ 
+  grid-template-columns: 200px auto auto; --> auto means 1fr (same)
+*)  
+
+*/
+
+/* ******************************************************************** */
+
+/* 3) grid-template-rows: --> helps to define the height of rows
+
+grid-template-rows: --> defines the height of rows
+grid-template-columns: --> defines the width of columns
+
+grid-template-rows: 200px 50px;  --> means the first row will have 200px and the second row will have 50px while the rest of the rows will have the rest of the required space shared equally
+
+*/
+
+/* ******************************************************************** */
+
+/* 4) grid-auto-rows --> helps to define the height of rest of the rows shared equally after we have defined some rows size usinf grid-template-rows
+
+
+* grid-template-rows: 200px 50px;
+  grid-auto-rows: 150px;   --> means the first row will have 200px and the second row will have 50px while the rest of the rows will have absolute 150px
+
+*/
+
+
+
+/* ******************************************************************** */
+
+/* 5) justify-content:   -> helps to align the children-columns on x-axis around the grid parent 
+(wont work if we have used "fr" in grid-template-column)
+
+* justify-content: center;    -> will make the columns towards the center of the grid parent
+
+
+* justify-content: start;    -> will make the columns towards the leftside of the grid parent
+
+
+
+* justify-content: end;    -> will make the columns towards the rightside of the grid parent
+
+
+
+* justify-content: space-around;     -> will make equal available spaces on left and right side of each column children
+
+
+* justify-content: space-between;     -> will make the available space to only occur between the columns and not with the borders of container
+
+
+* justify-content: space-evenly;     -> will make the available space to come evenly between the borders of the container and in between the children.
+*/
+
+/* ******************************************************************** */
+
+
+/* 5) align-content: -> helps to align the children-rows on y-axis around the grid parent 
+(wont work if we have used "fr" in grid-template-row)
+ 
+ *) To test this first define some absolute height of grid parent container
+
+ *) It is different from the property (align-items)
+
+ *) align-content-: stretch;   --> By default its value is stretch hence if we define the height of the container then all its children will stretch equally to cover the extra space
+ -
+-
+ *) align-content-center;   --> all the rows will take the space of their content and all the rows will align themselves to the center of the parent grid container
+-
+-
+ *) align-content-start;   --> all the rows will take the space of their content and all the rows will align themselves to the top of the parent grid container
+-
+-
+ *) align-content-end;   --> all the rows will take the space of their content and all the rows will align themselves to the bottom of the parent grid container
+-
+ -
+ *) align-content-space-around;     -> will make equal available spaces on top and bottom side of each row children
+-
+-
+*) align-content-space-between;     -> will make the available space to only occur between the rows and not with the borders of container
+-
+-
+*) align-content-space-evenly;     -> will make the available space to come evenly between the borders of the container and in between the children.
+
+ */
+
+ /* ******************************************************************** */
+
+ /*  *6)
+    align-items:  -->  Unlike align-content , it will not make the whole grid move rather all the small grid boxes to move within their inner divs which includes the space of grid boxes and some extra available space
+ 
+    /* It will by default stretch the whole grid as in align-content: center 
+    /* Whatever the height the grid was getting , if we divide them into equal grid-box-spaces then it will comprise of inner divs 
+    
+    *) align-items: center;   --> will make the grid box go to the center of inner div
+
+    *) align-items: start;    --> will make the grid box go to the top of inner div
+
+    *) align-items: end;      --> will make the grid box go to the bottom of inner div
+
+    *) align-items: baseline;  --> will make the grid box go to the top of inner div
+
+  */
+
+
+
+
+  /* *********************CHILD PROPERTIES******************* 
+  
+  --> catching one child and specifically applying properties to that
+  
+  */
+
+  /* 1) justify-self   --> helps to move a particular grid box in x-direction according to the space provided in grid-template columns for that column
+  
+      * By default this property is set to stretch
+     
+     *  justify-self: stretch;    --> means the grid box will stretch horizontally according to its given width through grid-template-columns.
+
+     
+     *  justify-self: start;         --> will shrink the size of grid box horizontally according to the space required by content inside it and move the grid box to the left side of its acquired space earlier
+
+
+     *  justify-self: end;            --> will shrink the size of grid box horizontally according to the space required by content inside it and move the grid box to the right side of its acquired space earlier
+
+
+     *  justify-self: center;          --> will shrink the size of grid box horizontally according to the space required by content inside it and move the grid box to the center of its acquired space earlier
+  
+  
+  
+  
+  /*  2) align-self:  helps to move a particular grid box in y-direction according to the space provided for inner div through grid-template-rows for that row
+  /* just like align item s for entire grid align self is for one grid box*/
+  /*  
+    *  align-self: start;         --> will shrink the size of grid box vertically
+       according to the space required by content inside it and move the grid box to the top side of its acquired space earlier
+
+
+    *  align-self: end;            --> will shrink the size of grid box vertically according to the space required by content inside it and move the grid box to the bottom side of its acquired space earlier
+  */
+
+  
+  /* ******************************************************************************************************************************** */
+  
+
+  /*NOTE: these properties applied to whichever box using id will go to the start of the given column or row border no. while other boxes in that space will move ahead*/
+  /* grid-column:    -->  shorthand property for grid-column-start and grid-column-end grid box
+   *) first have atleast 3 columns to notice the changes
+   *) It will make the column bigger or smaller by taking entire space of other columns too
+
+   *) Grid column no.s are divided on the basis of the borders of the columns
+   Hence there are three column no.s between 1st and 2nd grid box, one in start, one in end , one in between the first and second grid box
+   
+   
+   grid-column-start : 1;
+   grid-column-end : 2;    // will not make any difference as the 1st gridbox is already stretched between column no. 1 and 2
+
+
+   grid-column-start : 1;
+   grid-column-end : 3;    //grid-box-1 will take the space of both grid box-1 and grid-box-2
+
+
+   grid-column-start : 1;
+   grid-column-end : 5;   // even if we defined 3 grid-boxes still will define one more fourth grid-box which has leftover space and is responsive
+   The above is not good practice though
+
+   grid-column: 1 / 3;   -->  shorthand property for grid-column-start and grid-column-end, hence it will make grid box-1 take the space of both grid box-1 and grid-box-2 
+   
+
+   grid-column: 1 / span 2;    --> means 1st index se start krke 2 grid-boxes tak
+
+   grid-column: 1 / span 3;    --> means 1st index se start krke 2 grid-boxes tak
+
+  
+   -ve indexes start from last grid box's last border and come to the start border
+   
+   grid-column: 1 / -1;    it will make grid box-1 take the space of grid box-1 to last grid-box
+   
+    Note:  it doesnt overwrite the box rather it takes its space and shifts the other boxes after this changed box
+  */
+  
+
+  /* ******************************************************************************************************************************** */
+  
+  /* 
+  grid-row :    -->   shorthand property for grid-row-start and grid-row-end grid box
+
+  same properties as grid-columns through which we can merge a gridbox with many gridboxes vertically
+  
+  everything will work same as grid-columns
+   
+  Note:  it doesnt overwrite the box rather it takes its space and shifts the other boxes after this changed box
+   
+  grid-row : 1/4;
+
+  grid-row : 1 / span 4;
+  
+  */
+
+  /* ******************************************************************************************************************************** */
+
+  /* 
+  grid-area --> shorthand property for grid-rows and grid-columns
+
+  grid-area : 1 / 1 / 3 / 3;    
+  1st -> starting row;
+  2nd -> starting column;
+  3rd -> end row;
+  4th -> end column;
+  
+  
+  
+  */
+
+  /* ****************************************************************** */
+
+  /* ****************************************************************** */
+
+  /* Grid template areas
+  Named grid items can be referred to by the grid-template-areas property of the grid container. The grid-area property can also be used to assign names to grid items.
+
+  For this we have to delete grid-template-column property and define 
+
+  grid-template-area: "hdr hdr hdr hdr"
+                      "sbr main main main"
+                      "sbr main main main"
+                      "ftr ftr ftr ftr"
+
+  1) remember every line will have elements with double quotes at start and end
+  2) same named elements will be treated as one but make sure they are able to connect
+  3) we can use any name for the elements
+  4) we need to make divs in html and connect them with these names using grid-area property
+  5) every different name should have a different div connected
+  6) Remember while connecting their names they should not be under any quotes
+
+  #box1{
+    grid-area: hdr     
+  }
+
+  .box2{
+    grid-area: main;
+  }
+
+  .box3{
+    grid-area: sbr;   
+  }
+
+  .box4{
+    grid-area: ftr;
+  }
+
+  other divs will come above it or below it according to html order but box - 1,2,3,4 will stay together and arrange themselves in the layout presented by grid-template-area using names 
+  */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+  height: 600px;
+    border: 2px solid red;
+    display: grid;
+    gap: 20px 5px;
+    /* grid-template-columns: 20vw 200px 300px;    px is absolute width while vw will change according to the screen width */
+
+    /* grid-template-columns: 30% 70%;  relative to the screen */
+
+    /* grid-template-columns: repeat(4, 1fr); */ 
+    grid-template-columns: 200px 200px 200px;
+    
+    /* grid-template-rows: 200px 80px;
+    grid-auto-rows: 150px;
+    justify-content: center;
+    align-content: center; */
+
+    /* align-items: start; */
+
+}
+
+.box{
+    border: 2px solid green;
+    padding: 12px;
+}
+
+#box-5{
+  background-color: bisque;
+  justify-self: center;
+  align-self: center;
+  grid-column-start: 1;
+  grid-column-end: 4;
+
+  grid-column: 1 / -1;
+  grid-row: 1 / 3;
+  grid-area: 1 / 1 / 3 / 3;
+}
