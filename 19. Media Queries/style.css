@@ -1,0 +1,140 @@
+/* media queries help us to change the properties or total css of the page or an element when we hit a specific condition */
+
+
+/* By default
+
+screens -->
+
+*) <= 640px  = small
+*) 640px <= 768px  = md
+*) 768px <= 1024px = ls
+*) 1024px <= 1280px = xl
+*) 1280px <= 1536px = 2xl
+
+*/
+
+body{
+    background-color: red;
+}
+
+
+/* whenever the screen size changes  to less equal to 400px hence it the body will change its background colour to green
+
+@media(width<=400px)   --> *New features*
+{
+    body{
+        background-color: green;
+    }
+}
+
+
+******Old feature*******
+@media(max-width:400px)    --> using max-width means upto 400px
+{
+    body{
+        background-color: green;
+    }
+}
+
+*/
+
+/* whenever the screen size becomes such that its (width < height) then its orientation will change from landscape to portrait, hence its body will change its background colour to green when the screen orientation will become portrait
+
+@media(orientation: portrait)
+{
+    bod y{
+        background-color: green;
+    }
+} 
+*/
+
+
+
+
+/* ******************************************************************************************************************************** */
+
+/* Using multiple media queries for same page
+
+@media(max-width:400px)    
+{
+    body{
+        background-color: green;
+    }
+}
+
+@media(max-width:200px)    --> using max-width
+{
+    body{
+        background-color: gold;
+    }
+}
+
+whenever the screen size changes  to less equal to 400px hence it the body will change its background colour to green but when the screen becomes less than 200px then the body will change its background colour to gold
+
+
+/*** If we reverse the order then the website will at last turn green now instead of gold because media queries are checked from below whichever is true first will get executed  
+
+
+Hence max-width should always be written from top to bottom at decreasing order while min-width should always be written from top to bottom in increasing order.
+
+*/
+
+/* ************************************************************ */
+
+/* min-width --> means starting from
+
+@media(min-width:200px)    --> using min-width
+{
+    body{
+        background-color: gold;
+    }
+}
+
+means whenever our screen touches 200px or above then it will start working 
+
+*/
+
+
+/* ************************************************************ */
+
+/* defining media query within a range using logical "and"
+
+
+// OLD SYNTAX
+
+@media(min-width: 400opx) and (max-width: 600px){
+    body{
+        background-color: green
+    }
+
+    //First min-width and then max-width
+}
+
+//NEW SYNTAX (might not support in many browsers)
+
+@media(400px <= width <= 600px)
+{
+    body{
+        background-color: green;
+    }
+}
+
+*/
+
+/* Good practice to use screen and getting it and with all our conditions
+    // screen --> signifies that our website is used for computer screens, tablets, smartphones etc.
+    // all  --> Used for all media type devices
+    // print --> Used for printers
+    // speech  --> Used for screenreaders that "reads" the page out loud
+*/
+
+
+@media screen and (400px <= width <= 600px)
+{
+    body{
+        background-color: green;
+    }
+}
+
+
+
