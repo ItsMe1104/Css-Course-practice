@@ -1,0 +1,146 @@
+/* Defining variables
+
+    1) use two high-fins so that css would know its a variable, then use colon and the css property
+    e.g --> --abc: red;
+
+    2) for multiple words use high-fin in between
+    e.g --> --hrithik-shaw : red;
+
+    3) variables defined inside a class or id will work only for that element and its children
+        .class_name{
+            --my-var: green;     // will nly work for element having class = class_name and its children
+        }
+
+    4) If we want it to get applied to every element then we should declare glbal variables
+
+    5) If we by mistake use some variable which is not under its scope then we can use fallback
+    
+    h1{
+        background-color: var(--my-var, green);   //hence if h1 dont find the variable --my-var then it will fallback to green
+    }
+
+
+    6) If we overwrite the value of a variable in a child class or child id then this overwitten variable's scope will only be valid for that child class and its children. Above this hierarchy the variables value will remain same for the parent classes or ids
+
+
+    7) This variable can also be changes inside media query
+    e.g -->
+    
+    .box{
+        --my-var: red;
+    }
+
+    @media screen and (min-width: 800px)
+    {
+        .box{
+            --my-var: green;
+        }
+    }
+
+
+    8) This variables can also be changed using javascript
+
+
+    9) How to use this variable?
+    --> use the var() function wherever we want to use the variables's value
+    e.g -->
+
+    .box{
+        --my-var: yellow;
+    }
+    
+    .b1{
+        color: var(--my-var);
+    }
+
+*****************************************************************
+   
+    10) Global variables
+    *) Defined inside html tag which is the root element
+    *) scope is to all the elements
+    *) we define it inside the root class having syntax
+
+        :root {
+            --primary-text-color: rgb(206, 216, 208)
+            --secondary-text-color: blue;
+        }
+
+        .box{
+            color: var(--primary-text-color);
+        }
+
+        .b1{
+            color: var(--primary-text-color);
+        }
+
+        .container h2{
+            background-color: var(--primary-text-color);
+        }
+
+     *) Its a good practice to define primary and secondary text color as variable in root element and use primary-text color for headings throughout website and secondary text color for paragraphs throughout website
+*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-text-color: #222;
+    --secondary-text-color:#444;
+    --card-background-color: #fff;
+    --background-color: #eee;
+    --default-spacing: 30px;
+}
+
+
+/* Inorder to make a dark theme we need to overwrite the above root variables in a class */
+/* Then we will put this class in body tag to make the whole page a daark theme by
+
+1) either giving a class="dark" to body
+2) or use javascript and use the following syntax
+
+    <script>
+        docuent.body.classList.add("dark");
+    </script>
+
+
+*/
+.dark{
+    --primary-text-color: #fff;   /*changing text color to white when dark theme come on*/
+    --secondary-text-color:#ddd;
+    --card-background-color: #333;
+    --background-color: #111;
+}
+
+.container{
+    min-height: 100vh;
+    padding: 40px;
+    background-color: var(--background-color);
+}
+
+h1{
+    text-align: center;
+    color: var(--primary-text-color);
+}
+
+.box{
+    padding: var(--default-spacing); 
+    background-color: var(--card-background-color);
+    margin-block: var(--default-spacing);
+    border-radius: var(--default-spacing);
+}
+
+h2{
+    color: var(--primary-text-color);
+    margin-bottom: var(--default-spacing);
+}
+
+p{
+    color: var(--secondary-text-color);
+}
+
+
+/* How to make a dark-the,e */
