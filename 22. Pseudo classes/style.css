@@ -1,0 +1,120 @@
+/* Pseudo class is used to define a special state of an element */
+/* 
+Some examples are -> visited, hover, first-child, last-child, nth-child
+*/
+
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 40px;
+}
+
+/* Will define the normal state which will appear to us normally
+
+.primary-btn{
+    color: green;
+}
+
+*/
+
+/* Pseudo class: use to define state during hover */
+/* Hence the anchor tag will stay in its normal state but will change its properties to defined below properties once we hover on it */
+.primary-btn:hover{
+    color: red;
+    background-color: black;
+    padding: 10px;
+}
+
+/* works same as in normal state with one difference */
+/* If we apply the below link pseudo class then the link will appear the color we defined here but just if we click the link once then by default it will change to purple due to browser properties, but if we defined link color using normal class hence even after clicking the link will not change its colour*/
+
+.primary-btn:link{
+    color: yellow;
+}
+
+/* If we click the link even once then its colour will remain changed to aqua using pseudo class: visited*/
+.primary-btn:visited{
+    color: aqua;
+}
+
+
+/* Whenever we click on the link at that instant what its state will be we can easily define using pseudo class: active */
+
+.primary-btn:active{
+    color: black;
+    background-color: white;
+    border: 4px solid red;
+}
+
+/* *************************************************************************************************************************************** */
+
+/* First-child,last-child, nth-child pseudo classes*/
+
+/* first-child */
+/* if we have same elements in a parent just like in index.html we have same li children for one ul, hence if we specifically want to target the first li for styling without giving it a specific class then we use first-child using this syntax...*/
+
+
+ul li:first-child     /*dont write just ul:first-child as we have to specify which of its child-element*/
+{
+background-color: violet;
+}
+/* Since CSS doesnt know which ul we are talking about it will pick up all the ul's which ever have li and will style their first child */
+
+
+
+/* if we want to target the first child of a specific ul then we have to give a class to that ul and target it like the following syntax  */
+.first li:first-child{
+    background-color: chartreuse;
+}
+
+
+
+
+/* last-child */
+
+ul li:last-child     /*dont write just ul:last-child as we have to specify which of its child-element*/
+{
+background-color: red;
+}
+/* Since CSS doesnt know which ul we are talking about it will pick up all the ul's which ever have li and will style their last child */
+
+
+
+/* if we want to target the last child of a specific ul then we have to give a class to that ul and target it like the following syntax  */
+.last li:last-child{
+    background-color: pink;
+}
+
+
+/* n-th child */
+
+/* It works on the formula  an + b  (n=0,1,2,3,... till element gets over)  */
+/* It helps us to target any nth child of the parent using syntax
+    parent child:nth-child(child_no.){
+
+    } 
+*/
+
+.first li:nth-child(4){
+    background-color:brown;    
+}
+
+/* here 4 = b but we can also use the formula ab + b*/
+/* For defining a we have to write n after a's value */
+
+.first li:nth-child(2n){
+    background-color:brown;    
+}
+/* 2n means even positions (n starts from 0 but since there is no zeroth child , hence it starts from 2(1) i.e second child) */
+
+
+.first li:nth-child(3n){
+    background-color: blueviolet
+}
+/* 3n means even positions divisible by 3 */
+
+
+.second li:nth-child(2n+1){
+    background-color: cornflowerblue;
+}
+/* means odd positions as n starts from 0 (a = 2, b = 1) */

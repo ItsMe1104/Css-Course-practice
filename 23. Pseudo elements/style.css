@@ -1,0 +1,90 @@
+/* Pseudo elements -> used to style specified parts of an element */
+/* matlab pure element ka ek chota sa part select krna */
+
+/* Unlike pseudo classes , Pseudo elements start with double colon*/
+/* some are
+
+::first-letter{
+    --> helps to style the first letter of an element
+    --> generally used in Heading tags
+}
+
+::first-line{
+    --> helps to style the first line of an element
+    --> generally used in paragraph tags
+    --> its responsive hence no matter how many words fit in first line according to the screen width
+}
+
+::selection{
+    --> applies the property(like color, background-color) when we left click and drag to select items using mouse 
+}
+
+*/
+
+h2::first-letter{
+    font-size: 3rem;
+}
+
+p::first-line{
+    background-color: burlywood;
+}
+
+::selection{
+    color: greenyellow;
+    background-color: black;
+}
+
+
+/* ::before{}  and ::after{} */
+
+/* ::before{
+    --> will select the first part of that element and add content (using content property) or style or whatever we want just before that
+    
+    --> e.g - if we select h2 tag then whatever we want to add before the first letter of that h2 we can do it using ::before pseudo element
+
+    --> whatever we add using this selector wont be available to select using mouse or style it giving a class
+    later because it will not be a part of the DOM
+} */
+
+
+h3::before{
+    content: "This is beginning using ::before --> ";
+}
+
+
+/* ::after{
+    --> will select the last part of that element and add content (using content property) or style or whatever we want just after that
+    
+    --> e.g - if we select h2 tag then whatever we want to add after the last letter of that h2 we can do it using ::after pseudo element
+
+    --> whatever we add using this selector wont be available to select using mouse or style it giving a class
+    later because it will not be a part of the DOM
+} */
+
+h3::after{
+    content: "*";
+}
+
+
+/* Use --> sometimes in forms we see a required sign beside a specific field */
+
+.required::after{
+    content: "*";
+    color: red;
+} 
+/* Hence everyone who has the class of required would get this pseudo element*/
+
+
+/* Another use --> */
+.important::after{
+    content: "important";
+    background-color: red;
+    color: white;
+    padding: 0.2rem;
+    font-size: 0.5rem;
+    margin-left: 10px;
+    
+    /* Important */
+    vertical-align: middle;   /*makes the child align in the middle vertically to the parent */ 
+}
+/* Hence everyone who has the class of important would get this pseudo element*/
