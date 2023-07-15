@@ -1,0 +1,189 @@
+/* The transform property applies to a 2D or 3D transformation to an element. */
+/* Some important properties are --> scale, skew, translate, rotate */
+
+
+/* ***************************************************************** */
+/* scale helps to scale a div that we can adjust its size in x and y direction w.r.t its original size set initially by us
+
+transform: scale(1);   --> means no change that is original size
+transform: scale(0.5);  --> means half decrease in both x and y direction
+transform: scale(2);  --> means double increase in both x and y direction
+transform: scale(0.1);  --> means 1/10th of its original size
+
+
+******** IF we want to scale in only X-direction then we use scaleX()
+transform: scaleX(2);  --> means double increase in only x-direction but will remain same size in y-direction
+
+
+******** If we want to scale in only Y-direction then we use scaleY()
+transform: scaleY(2);  --> means double increase in only y-direction but will remain same size in x-direction
+
+
+******** IF we want to scale in both X-direction and Y-direction differently then we use scaleX() and scaleY() together.
+transform: scaleX(2) scaleY(1.5);  --> means double increase in only x-direction but will increase 1.5 times in y-direction
+
+or use
+transform: scale(2, 1.5);
+
+
+******** If we want to scale in only Z-direction(that is out of the screen toward us) then we use scaleZ()
+transform: scaleZ(2);  --> means double increase in only Z-direction but will remain same size in x and y direction
+
+Note: if the element is not tilted using transform: skew() (that is in normal circumstance) then we wont be able to see its effect
+*/
+
+/* ************************************************************************** */
+
+/* skew() --> helps us to tilt the image to a certain angle along with its content 
+
+*) Making an angle with x-axis 
+transform: skewX(20deg);   --> 20 deg with x-axis
+ 
+*) Making an angle with y-axis 
+transform: skewY(20deg);  -->20 deg with x-axis
+
+*) Shorthand -->
+transform: skew(20deg, 40deg); 20 deg with x-axis, 40 deg with y-axis
+*/
+
+/* ************************************************************************** */
+
+/* translate() --> helps us to move the image in any direction(X,Y,Z) from its original position 
+
+*) Move along x-axis 
+transform: translateX(20px);   --> 20px right along x-axis
+transform: translateX(-20px);   --> 20px left along x-axis
+
+*) Move along y-axis 
+transform: translateY(20px);   --> 20px bottom along y-axis
+transform: translateY(-20px);   --> 20px up along y-axis
+
+*) Move along z-axis 
+transform: translateZ(20px);   --> 20px towards us along z-axis
+transform: translateZ(-20px);   --> 20px away from us along z-axis
+
+*) Shorthand -->
+transform: translate(20px, 40px); --> 20px right along x-axis, 40px down along y-axis
+
+*) We can use any other units instead of px
+e.g --> how to bring an element to the center of parent using translate 
+
+transform: translate(50%, 50%);
+
+*/
+
+
+/* ************************************************************************** */
+
+/*  rotate()  --> helps us to rotate the element along the three axes
+*) rotates clockwise
+
+*) By default the element rotates along z-axis
+    transform: rotate(20deg);
+
+*) Rotating along x-axis
+    transform: rotateX(20deg);
+    
+    transform: rotateX(90deg);    --> we wont be able to see the element as it rotated 90deg
+
+    transform: rotateX(180deg);   --> will rotate the element upside down along with its content
+
+*) Rotating along Y-axis
+    transform: rotateY(20deg);
+
+    transform: rotateX(180deg);   --> will rotate the element as mirror image along with its content
+
+*) Rotating along Z-axis
+    transform: rotateZ(20deg);
+*/
+
+
+/* We can apply all the above properties together 
+
+    transform: rotate(45deg) scale(1.2) skew(30deg) translate(45px);
+*/
+
+
+/* ******************************************************************************************************************************** */
+/* Transform Origin --> allows us to change the position of transformed elements. 
+    *)2D transformations can change the x and y axis of an element. 
+    *) 3D transformations can also change the z-axis of an element 
+    *) Supported values : left, center, right, length, %
+    *) It helps us to change the origin
+
+    e.g -->
+    *) By default the z-axis is on the center of the element but we can shift the z-axis(origin) to different parts of the element
+    
+    *)
+    transform-origin : top;   --> means center of the top edge of the element
+    transform: rotate(45deg);  //will rotate from new element
+
+    *)
+    transform-origin : top-left;   --> means top-left corner of element in 2D (imagine in a square)
+    transform: rotate(45deg);  // will rotate from new origin
+    
+    *)
+    transform-origin : top;   --> means center of the top edge of the element
+    transform: scale(2);   --> now the scaling will not be from center in all directions but the element will double its size in left right and bottom such that it still doubles but not from above hence it would start scaling from top and scale downwards
+
+    *)
+    transform-origin : top left;   --> means center of the top edge of the element
+    transform: scale(2);   --> now the scaling will not be from center in all directions but the element will double its size from top-left
+
+
+    // Using % or length units to define origin
+    *) first value is relative to the width
+    *) second value is relative to the height
+
+    transform-origin: 50% 50%  --> default origin value hence no change
+
+    transform-origin: 0% 0%   --> origin will move to top-left corner
+
+    transform-origin: 10% 0%   --> origin will move 10% right from top left corner along the top edge
+
+    transform-origin: 100% 100%   --> origin will move to bottom-right corner
+
+    transform-origin: 100px 200px;  --> origin will move to 
+    100px right and 200px down.
+
+
+    //******************************
+    Nice animation
+
+    .box{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+
+        transition: 0.5s ease;
+        transform-origin: 100px 200px;
+    }
+
+    .box:hover{
+        transform: rotate(45deg);
+    }
+*/
+
+
+.container{
+    width: 400px;
+    height: 400px;
+    background-color: steelblue;
+    margin: 80px auto;    /*auto makes it center from left and right*/
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: tomato;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s ease;
+    transform-origin: 100px 200px;
+}
+
+.box:hover{
+    transform: rotate(45deg);
+}
