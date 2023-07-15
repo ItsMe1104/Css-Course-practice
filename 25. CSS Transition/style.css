@@ -1,0 +1,176 @@
+/* Basically we use transitions to show transforms in an animated way */
+/* It allows us to change property values smoothly over a given duration */
+
+/* Two values must be specified
+a) the CSS property we want to add an effect to
+b) the duration of the effect
+
+If we dont specify duration then by default its value is 0 hence it will show no effect
+*/
+
+/* Some transition properties are 
+
+*) transition-delay
+*) transition-duration  --> for how much time the transition will take to complete
+*) transition property
+*) transition-timing function
+
+
+transition: 1s   --> means the total change of state will take place not rapidly but overall in 1s
+
+.box{
+    background-color: teal;
+    transition: 1s;    --> shorthand for transition-duration
+}
+
+.box:hover{
+    background-color: purple;
+}
+
+// Hence the box will change color from teal to purple on hover but will show this transition not within the blink of an eye but rather slowly taking 1s;
+
+// COOL TRANSITION
+.box{
+    background-color: teal;
+    transition: 1s;
+}
+
+.box:hover{
+    background-color: purple;
+    border-radius: 50%;   --> means square will change to a circle
+}
+
+//The above transition will also happen very slowly taking 1s
+
+*/
+/* ************************************************************************* */
+
+/* 
+1) transition-duration  -->  means the total change of state will take place
+
+.box{
+    transition-duration: 1s;
+}
+
+
+2) transition-property:  --> which tell that out of all the properties that change during change of state ,which of these properties will show transition 
+
+*) By default its value is "all", which means transition will be applied to all change in properties during change of state
+
+//Try to avoid using all as for low efficient computers it might take extra CPU power
+--> transition-property: all
+
+
+*) Multiple properties can be defined using ","
+
+.box{
+    transtion-duration: 1s;
+    transition-property: background-color,border-radius; 
+}
+
+.box:hover{
+    background-color: purple;
+    border-radius: 50%;
+    transform: rotate(180deg);
+}
+
+//Out of the above properties only background-color and borer-radius change will use transition-duration of 1s while transform: rotate will work as in normal circumstance
+
+//Use the above transition to make cool animation (but also include transform)
+
+*/
+/* ******************************************************************************************* */
+
+/* 3) transition-delay --> delay after which we want our animation to start and change the property
+
+transition-delay: 1s;
+
+//Generally keep it low value else it will show your website laggy
+*/
+
+
+/* ******************************************************************************************* */ 
+
+/* 4) transition-timing-function  --> tells us how we go from point A to point B, what is our speed and which way we chose
+
+// we know which change in state property will occur which defines point A and point B
+// we also know in how much time we need to complete due to transition-duration
+// we just need to choose the way
+
+*) Values -->  (By default - ease)
+a) ease - slow start, then fast and then end slowly   (default value)
+transition-timing-function: ease;
+
+b) linear - same speed from start to end
+transition-timing-function: linear;
+
+c) ease-in - slow start and then normal
+transition-timing-function: ease-in;
+
+d) ease-out - normal and then slow end
+transition-timing-function: ease-out;
+
+f) ease-in-out - slow start and end but normal in between
+transition-timing-function: ease-out;
+
+g) cubic-bezier(n,n,n,n) - lets us define ourr own values in cubic-bezier function
+// helps to overenlarge and then come back to defined changed state
+//we use developer tools to define hese values
+// just click on small box near transition-timing-function's value and then define your curve and copy the values
+
+//Use transform: scale(1.2); to better observe
+
+*/
+
+/* Shorthand --> defining transition-properties in single line
+
+1) transition-property
+2) transition-duration
+3) transition-timing-function
+4) transition-delay
+(In order)
+
+transition: width 2s linear 1s;
+
+*/
+
+
+
+.box{
+    margin: 100px auto;
+    width: 200px;
+    height: 200px;
+    background-color: teal;
+    transition: 1s;
+}
+
+.box:hover{
+    background-color: purple;
+    border-radius: 50%;
+}
+
+
+/* Where are the transitions actually used? */
+/* During hover-links */
+
+.list{
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+
+.item{
+    font-size: 2rem;
+    padding: 8px 16px;
+    transition: 0.4s ease-in;
+    
+}
+
+/* Remember to not define transition in hover state because just as we stop hpvering it will give a jerking effect as the transitions will suddenly stop */
+.item:hover{
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transform: translateY(-10px);
+}
