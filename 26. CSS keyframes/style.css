@@ -1,0 +1,285 @@
+/* CSS allows animation of HTML elements without using JS */
+
+/* transition works when we perform an action */
+/* transition only helps us to define from and to state */
+
+
+/*  To avoid that we use keyframes so that we can transition between as many keyframes as we want*/
+
+/* Keyframes --> they hold what styles the element will have at certain times */
+/* Syntax for keyframes -->
+
+    @keyframes _keyframe_name_
+    {
+        0%{ 
+            //   matlab 0% of the animation duration pe kya krna hai (we have to define animation duration also using animation-durattion property)
+            //   by-default our animation will start rendering from the position defined here
+        }
+        2%{
+             // matlab 2% of the animation duration pe kya krna hai
+        }
+        25%{
+            // matlab 25% of the animation duration pe kya krna hai
+        }
+    }  
+    //not necessary to define in order
+
+    
+    *) if we want same task to be done at different timings then we can also define in same line
+
+    @keyframes _keyframe_name_
+    {
+        0%,100%{
+
+        }
+
+        25%{
+
+        }
+    }
+
+
+    e.g -->
+    *) To move a square on the boundaries of parent square
+    
+    @keyframes circles{
+        0%{
+            transform: translate(0,0);    
+            // at 0th time the box must move at 0,0 position in x and y direction   
+        }
+        25%{
+            transform: translate(200px,0);
+            // at 25% time the box must reach to 200px in the x and 0px in y-direction 
+        }
+        50%{
+            transform: translate(200px,200px);
+            // at 50% time the box must reach to 200px in the x and 200px in y-direction 
+        }
+        75%{
+            transform: translate(0px,200px);
+            // at 75% time the box must reach to 0px in the x and 200px in y-direction
+        }
+
+        //we don't need to define for 100% as by default it will reach its original position after the animation. 
+    }
+
+    //To start this animation we must define two properties
+    a) animation-name --> value should be the keyframe_name with which we defined the keyframe 
+    b) animation-duration --> the duration at which we want our animation to finish
+    // if we set it to 0 then our animatio wont work
+      
+    Note: after the animation is finished by default the element will return to its original position following shortest path
+
+    .box{
+        animation-name: circles;
+        animation-duration: 4s;
+    }
+*/
+
+/* **************************************************** */
+/* Some more animation properties
+
+a) animation-delay: --> after how much time the animation will start
+   animation-delay: 1s;
+
+b) animation-iteration-count --> how many times the animation will run or repeat
+   *) animation-iteration-count: 4;     //4 times
+   
+   *) animation-iteration-count: infinite;    //the animation will run infinite times
+
+
+c) animation-direction:  --> whether an animation should be played forwards, backwards or in alternate cycles
+
+    *) normal --> in forward direction (By default from 0% to 100% )
+    *) reverse --> reverse direcion that is from 100% to 0% (backwards)
+    *) alternate --> forward first, then backward  (0% to 100 then again 100% to 0%)
+    *) alternate-reverse --> backward first, then forward  (100% to 0% then again 0% to 100%)
+
+    animation-direction: alternate;
+
+
+d) animation-fill-mode -> specifies a style i.e where our target element should be when the animation is not playing (before it starts, after it ends, or both)
+
+Values
+*) none --> by default, will come back to its original position
+*) forward --> the element will stay at the position set by the last key-frame (depends on animation-direction and animation-iteration-count)
+*) backwards --> the element will come back at the position set by the first key-frame (depends on animation-direction)
+*) both --> the element will follow rules for both forwards and backwards
+
+@keyframes slide-in{
+    0%{
+        transform: translate(-400px);
+    }
+    100%{
+        transform: translate(200px);
+    }
+}
+
+.box{
+    animation-name: slide-in;
+    animation-duration: 1s;
+    
+    animation-fill mode: forwards --> will start at -400px and end at 100%'s position i.e 200px
+}
+
+.box{
+    animation-fill mode: backwards --> will start at -400px and end at 100%'s position i.e 200px
+}
+
+.box{
+    animation-fill mode: both--> will start at 0%s position (-400px) and end at 100%'s position i.e 200px
+}
+
+
+e) animation-timing-function : specifies the speed-curve of the animation
+(same as transition-timing-function along with same values)
+values --> ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier(n,n,n,n) 
+
+
+
+Note: if we have only 0% and 100% in keyframe then we can use from and two instead of 0% and 100% 
+@keyframes abc{
+    from{
+
+    }
+    to{
+
+    }
+}
+
+*/
+
+body{
+    margin: 0;
+    background-color: teal;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 200px;
+}
+
+/* .container{
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    animation-name: circle;
+    animation-duration:4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+} */
+
+@keyframes circle{
+    0%{
+        transform: translate(0,0);    
+        /* // at 0th time the box must start from 0,0 position in x and y direction    */
+    }
+    25%{
+        transform: translate(200px,0);
+        /* // at 25% time the box must reach to 200px in the x and 0px in y-direction  */
+    }
+    50%{
+        transform: translate(200px,200px);
+        /* // at 50% time the box must reach to 200px in the x and 200px in y-direction  */
+    }
+    75%{
+        transform: translate(0px,200px);
+        /* // at 75% time the box must reach to 0px in the x and 200px in y-direction */
+    }
+}
+
+
+
+/* Some cool animations */
+/* 1) Planet revolving animation around its orbit on the inner end
+using two squares */
+
+
+
+/* 
+//Box rotating at its place 360deg
+.box{
+    animation-name: orbit;
+    animation:duration:1s;
+    animation-iteration-count: infinite;
+}
+//Circle rotating at its place 360deg but not visible
+.box{
+    animation-name: orbit;
+    animation:duration:1s;
+    animation-iteration-count: infinite;
+    border-radius:50%;    // wont be clearly visible as the circle will be rotating
+} 
+*/
+
+/* planet revolving motion */
+.container{
+    /* Take width,height,border from above */
+    width: 300px;    
+    height: 300px;
+    border: 2px solid white;
+    animation: orbit 4s linear infinite;      
+    border-radius: 50%;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    
+}
+@keyframes orbit{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+/* The above is because we are revolving the container 360* which also revolves its content to show us that the inner circle is revolving but actually the outer circle is rotating */
+
+
+
+/* 2) Google Assitant 4 dot animation */
+
+.loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: white;
+    animation: up-down 0.8s ease infinite alternate;
+}
+
+.dot:nth-child(2){
+    animation-delay: 0.1s;
+}
+.dot:nth-child(3){
+    animation-delay: 0.2s;
+}
+.dot:nth-child(4){
+    animation-delay: 0.3s;
+}
+
+@keyframes up-down{
+    from{
+        transform: translateY(-10px);
+    }
+    to{
+        transform: translateY(10px);
+    }
+}
